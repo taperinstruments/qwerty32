@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script type="module">
+      import Qwerty32 from './index.js'
+      const device = await Qwerty32.connect()
+
+      device.addEventListener('gridKeyDown', (event) => {
+        console.log('gridKeyDown', event.detail.x, event.detail.y)
+      })
+      device.addEventListener('gridKeyUp', (event) => {
+        console.log('gridKeyUp', event.detail.x, event.detail.y)
+      })
+      device.addEventListener('query', (event) => {
+        console.log('query', event.detail) // { type: 2, count: 1 }
+      })
+      device.addEventListener('getId', (event) => {
+        console.log('getId', event.detail) // qwerty 32
+      })
+      device.addEventListener('getGridSize', (event) => {
+        console.log('getGridSize', event.detail)  // { x: 8, y: 4 }
+      })
+
+      device.query()
+      device.getId()
+      device.getGridSize()
+    </script>
+  </head>
+</html>
